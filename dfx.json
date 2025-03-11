@@ -1,0 +1,62 @@
+{
+  "canisters": {
+    "token": {
+      "type": "motoko",
+      "main": "backend/token/main.mo",
+      "declarations": {
+        "node_compatibility": true
+      }
+    },
+    "user": {
+      "type": "motoko",
+      "main": "backend/user/main.mo",
+      "declarations": {
+        "node_compatibility": true
+      }
+    },
+    "cart": {
+      "type": "motoko",
+      "main": "backend/cart/main.mo",
+      "declarations": {
+        "node_compatibility": true
+      }
+    },
+    "transaction": {
+      "type": "motoko",
+      "main": "backend/transaction/main.mo",
+      "declarations": {
+        "node_compatibility": true
+      }
+    },
+    "favorite": {
+      "type": "motoko",
+      "main": "backend/favorite/main.mo",
+      "declarations": {
+        "node_compatibility": true
+      }
+    },
+    "internet-identity": {
+      "type": "pull",
+      "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+    },
+    "product": {
+      "type": "motoko",
+      "main": "backend/product/main.mo",
+      "declarations": {
+        "node_compatibility": true
+      }
+    },
+    "frontend": {
+      "dependencies": ["user", "token", "product", "cart", "transaction", "favorite"],
+      "type": "assets",
+      "source": ["dist/"]
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "npm run --silent sources"
+    }
+  },
+  "output_env_file": ".env",
+  "version": 2
+}

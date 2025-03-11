@@ -1,0 +1,63 @@
+{
+  "name": "vite-react-motoko",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "overrides": {
+    "esbuild": {
+      "win32-x64": "@esbuild/win32-x64",
+      "linux-x64": "@esbuild/linux-x64",
+      "darwin-x64": "@esbuild/darwin-x64"
+    }
+  },
+  "scripts": {
+    "dfx:create": "dfx canister create --all",
+    "dfx:build": "dfx build",
+    "dfx:generate": "tsc && vite build && dfx generate",
+    "dfx:deploy-deps": "dfx deps pull && dfx deps deploy",
+    "dfx:deploy": "dfx deploy",
+    "dfx:install": "dfx canister install user --mode=reinstall && dfx canister install token --mode=reinstall && dfx canister install product --mode=reinstall && dfx canister install cart --mode=reinstall && dfx canister install transaction --mode=reinstall && dfx canister install favorite --mode=reinstall",
+    "backend": "npm run dfx:create && npm run dfx:build && npm run dfx:generate && npm run dfx:deploy && npm run dfx:deploy-deps",
+    "frontend": "vite --port 3000",
+    "build": "",
+    "build2": "tsc && vite build",
+    "test": "run-s test:backend test:frontend",
+    "test:frontend": "vitest run",
+    "test:backend": "mo-test",
+    "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\" \"backend/**/*.mo\"",
+    "sources": "mops sources",
+    "postinstall": "mops install"
+  },
+  "dependencies": {
+    "@ic-reactor/react": "^1.7.8",
+    "axios": "^1.7.5",
+    "react": "^18.2.0",
+    "react-datepicker": "^7.3.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.26.1",
+    "react-webcam": "^7.2.0",
+    "sweetalert2": "^11.6.13"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@vitejs/plugin-react": "^4.0.1",
+    "cross-fetch": "^3.1.6",
+    "dotenv": "^16.3.1",
+    "esbuild-wasm": "^0.23.1",
+    "ic-mops": "^0.39.2",
+    "jsdom": "^22.1.0",
+    "mo-dev": "^0.13.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.8",
+    "prettier-plugin-motoko": "^0.5.3",
+    "sass": "^1.63.6",
+    "tailwindcss": "^3.2.0",
+    "typescript": "^5.1.3",
+    "vite": "^4.3.9",
+    "vite-plugin-environment": "^1.1.3",
+    "vitest": "^0.32.2"
+  }
+}
